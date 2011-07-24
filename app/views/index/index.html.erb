@@ -1,3 +1,9 @@
-<div>
-Hello, Facebook Application!
+<div id="fb-root"></div>
+<div id="fb-content">
+<h1>Hello, Facebook Application!</h1>
 </div>
+<script>
+  FB.api('/me', function() {
+    alert(response['name']);
+  })
+</script>
