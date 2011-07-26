@@ -3,7 +3,30 @@
 <h1>Hello, Facebook Application!</h1>
 </div>
 <script>
-  FB.api('/me', function() {
-    alert(response['name']);
-  })
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId: 238386342849069,
+      status: true,
+      cookie: true,
+      xfbml: true,
+    });
+    FB.getLoginStatus(function(response) {
+      if (response.session) {
+        showUser();
+      } else {
+        // not yet
+      }
+    });
+  }
+  function showUser() {
+    FB.api('/me', function(response) {
+      alert(response.name);
+    });
+  }
+  (function() {
+    var e = document.createElement('script');
+    e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js'
+    e.async = true;
+    document.getElementById('fb-root').appendChild(e);
+  }());
 </script>
