@@ -14,7 +14,13 @@
       if (response.session) {
         showUser();
       } else {
-        // not yet
+        FB.login(function(response) {
+          if (response.session) {
+            showUser();
+          } else {
+            alert('see you');
+          }
+        });
       }
     });
   }
@@ -23,10 +29,10 @@
       alert(response.name);
     });
   }
-  (function() {
-    var e = document.createElement('script');
-    e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js'
-    e.async = true;
-    document.getElementById('fb-root').appendChild(e);
-  }());
+  $(function() {
+    $('<script>', {
+      src: document.location.protocol + '//connect.facebook.net/en_US/all.js',
+      async : true,
+    }).appendTo("#fb-root");
+  });
 </script>
