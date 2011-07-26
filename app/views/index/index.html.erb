@@ -1,6 +1,6 @@
 <div id="fb-root"></div>
 <div id="fb-content">
-<h1>Hello, Facebook Application!</h1>
+<h1>Hello <span></span>, Facebook Application!</h1>
 </div>
 <script>
   window.fbAsyncInit = function() {
@@ -26,7 +26,7 @@
   }
   function showUser() {
     FB.api('/me', function(response) {
-      alert(response.name);
+      $("#fb-content h1 span").text(response.name);
     });
   }
   $(function() {
